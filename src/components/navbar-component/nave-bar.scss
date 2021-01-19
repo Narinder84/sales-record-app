@@ -1,0 +1,40 @@
+/** @format */
+
+.navbar-container {
+	font-size: 1.2rem;
+	height: 20%;
+	color: whitesmoke;
+	display: flex;
+	justify-content: space-between;
+	border: solid 4px rgb(247, 247, 247);
+	background-color: rgb(4, 55, 85);
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 8px;
+}
+
+.left-navBar-items {
+	width: 40%;
+	display: flex;
+	justify-content: space-between;
+	p {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	:hover {
+		text-decoration: none;
+		color: rgba(177, 167, 167, 0.884);
+	}
+}
+
+.right-navbar-items {
+	p {
+		text-decoration: underline;
+		cursor: pointer;
+	}
+	:hover {
+		text-decoration: none;
+
+		color: rgba(177, 167, 167, 0.884);
+	}
+}
