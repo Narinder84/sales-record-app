@@ -28,7 +28,7 @@
 .table-section {
 	.row {
 		padding: 10px;
-		height: 15px;
+		height: 10px;
 
 		width: 360px;
 		display: flex;
@@ -36,7 +36,7 @@
 		align-items: center;
 	}
 	.col {
-		background-color: gray;
+		background-color: slategrey;
 	}
 }
 
@@ -80,7 +80,7 @@
 				text-transform: capitalize;
 				padding-left: 2px;
 				width: 20%;
-				height: 35px;
+				height: 28px;
 				font-size: 1.1rem;
 			}
 		}
