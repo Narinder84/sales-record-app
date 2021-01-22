@@ -1,0 +1,138 @@
+/** @format */
+.sales-record-container {
+	padding: 5px;
+	.sales-heading {
+		width: 100%;
+		background-color: beige;
+		display: flex;
+		justify-content: center;
+		text-align: center;
+	}
+}
+.upper-section {
+	display: flex;
+	height: 500px;
+	width: 99.3vw;
+	background-color: rgb(229, 233, 225);
+	.left-panel {
+		display: flex;
+		flex-direction: column;
+		width: 500px;
+		align-items: center;
+		p {
+			font-size: 1.2rem;
+			text-decoration: underline;
+		}
+	}
+}
+.table-section {
+	.row {
+		padding: 10px;
+		height: 15px;
+
+		width: 360px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.col {
+		background-color: gray;
+	}
+}
+
+.sales-table-container {
+	height: 100%;
+	overflow-x: scroll;
+	width: 100%;
+}
+.sales-table {
+	display: flex;
+	flex-direction: column;
+
+	.heading-row {
+		position: sticky;
+		top: 0;
+		display: flex;
+		height: 40px;
+		justify-content: space-between;
+		align-items: center;
+		background-color: slategrey;
+		.cell {
+			display: flex;
+			justify-content: center;
+			text-transform: capitalize;
+
+			width: 20%;
+			font-size: 1.1rem;
+		}
+	}
+	.data-row {
+		form {
+			margin-top: 5px;
+			display: flex;
+
+			input {
+				width: 100%;
+			}
+			.cell {
+				display: flex;
+				justify-content: center;
+				text-transform: capitalize;
+				padding-left: 2px;
+				width: 20%;
+				height: 35px;
+				font-size: 1.1rem;
+			}
+		}
+	}
+}
+
+.lower-section {
+	display: flex;
+	flex-direction: column;
+	margin-top: 5px;
+	background-color: rgb(230, 198, 20);
+	height: 123px;
+	align-items: center;
+	justify-content: center;
+	.sale-panel {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: center;
+		label {
+			padding-right: 10px;
+		}
+		input {
+			margin-top: 2px;
+			height: 30px;
+		}
+		button {
+			margin-top: 5px;
+			width: 100px;
+			height: 30px;
+		}
+		span {
+			width: 120px;
+		}
+	}
+}
+
+// @media only screen and (max-width: 400px) {
+// 	.upper-section {
+// 		height: 460px;
+// 		background-color: rgb(229, 233, 225);
+// 	}
+// 	.lower-section {
+// 		height: 176px;
+// 	}
+// 	.sale-panel {
+// 		span {
+// 			padding-left: 40px;
+// 		}
+// 	}
+// 	.bt {
+// 		padding-right: 40px;
+// 	}
+// }

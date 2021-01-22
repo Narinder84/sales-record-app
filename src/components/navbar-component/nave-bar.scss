@@ -2,9 +2,10 @@
 
 .navbar-container {
 	font-size: 1.2rem;
-	height: 20%;
+	height: 60px;
 	color: whitesmoke;
 	display: flex;
+
 	justify-content: space-between;
 	border: solid 4px rgb(247, 247, 247);
 	background-color: rgb(4, 55, 85);
@@ -16,6 +17,7 @@
 .left-navBar-items {
 	width: 40%;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	p {
 		text-decoration: underline;
@@ -36,5 +38,14 @@
 		text-decoration: none;
 
 		color: rgba(177, 167, 167, 0.884);
+	}
+}
+@media only screen and (max-width: 400px) {
+	.navbar-container {
+		font-size: 1rem;
+		height: 97px;
+	}
+	.left-navBar-items {
+		width: 60%;
 	}
 }
