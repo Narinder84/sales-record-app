@@ -7,14 +7,12 @@ import './search-input-box.styled.scss';
 const SearchInput = ({ list, label, handleChange, ...other }) => {
 	return (
 		<div className='input-container'>
-			<div className='serach-box'>
+			<div className={`search-box ${list ? 'active' : null}`}>
 				{list.map((val, indx) => {
 					return (
-						<>
-							<li className='li' key={indx}>
-								{val}
-							</li>
-						</>
+						<li className='li' key={indx}>
+							{val}
+						</li>
 					);
 				})}
 
