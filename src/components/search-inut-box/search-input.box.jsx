@@ -12,17 +12,20 @@ const SearchInput = ({
 	handleChange,
 	...other
 }) => {
-	console.log(other);
 	return (
 		<div className='input-container'>
-			<div className={`search-box ${list.length ? 'active' : null}`}>
-				{list.map((val, indx) => {
-					return (
-						<li className={`li ${indx === cursor ? 'pick' : null}`} key={indx}>
-							{val}
-						</li>
-					);
-				})}
+			<div className={`search-box ${list === undefined ? null : 'active'}`}>
+				{list !== undefined
+					? list.map((val, indx) => {
+							return (
+								<li
+									className={`li ${indx === cursor ? 'pick' : null}`}
+									key={indx}>
+									{val}
+								</li>
+							);
+					  })
+					: null}
 
 				<input
 					className='oder-form'

@@ -13,6 +13,8 @@ class SaleForm extends React.Component {
 			productId: '',
 			productName: '',
 			productPrice: '',
+			quantity: 0,
+			selected: '',
 			listForId: [],
 			listForProduct: [],
 			list: [
@@ -24,7 +26,7 @@ class SaleForm extends React.Component {
 	}
 	handleChange = (e) => {
 		const { name, value } = e.target;
-		console.log(name);
+
 		const data = () => {
 			switch (name) {
 				case 'productId':
@@ -33,6 +35,8 @@ class SaleForm extends React.Component {
 					);
 				case 'productName':
 					return this.state.list.filter((data) => data.name.includes(value));
+				case 'quantity':
+					return this.setState({ ...this.setState, [name]: value });
 
 				default:
 					break;
@@ -41,44 +45,100 @@ class SaleForm extends React.Component {
 		const newlist = data();
 
 		if (name === 'productId') {
-			return this.setState({
-				...this.state,
+			if (!value) {
+				return this.setState({
+					...this.state,
+					listForId: [],
+					productId: '',
+				});
+			}
+
+			return this.setState((prevState) => ({
+				...prevState,
 				[name]: value,
 				listForId: newlist,
-				productName: '',
-			});
+				selectedList: newlist.length > 0 ? newlist[this.state.cursor] : [],
+				productName: newlist.length ? newlist[this.state.cursor].name : '',
+			}));
 		}
 		if (name === 'productName') {
+			if (!value) {
+				return this.setState({
+					...this.state,
+					listForProduct: [],
+					productName: '',
+				});
+			}
 			return this.setState({
 				...this.state,
 				[name]: value,
 				listForProduct: newlist,
-				productId: '',
+				productId: newlist.length > 0 ? newlist[this.state.cursor].id : '',
+				selectedList: newlist ? newlist[this.state.cursor] : [],
 			});
 		}
 	};
 
 	handleKeyDown = (e) => {
 		if (this.state.productId || this.state.productName) {
-			console.log(this.state.cursor);
-			if (e.keyCode === 40) {
+			if (
+				(e.keyCode === 40 &&
+					this.state.cursor < this.state.listForProduct.length - 1) ||
+				this.state.cursor < this.state.listForId.length - 1
+			) {
 				e.preventDefault();
-				this.setState((preState) => ({
+				if (e.target.name === 'productName') {
+					return this.setState((preState) => ({
+						...preState,
+						cursor: preState.cursor + 1,
+						selectedList: this.state.listForProduct[preState.cursor + 1],
+						productId: this.state.listForProduct[preState.cursor + 1].id,
+					}));
+				}
+				return this.setState((preState) => ({
 					...preState,
-					cursor: this.state.cursor + 1,
+					cursor: preState.cursor + 1,
+					selectedList: this.state.listForProduct[preState.cursor + 1],
+					productName: this.state.listForProduct[preState.cursor + 1].name,
 				}));
 			}
-			if (e.keyCode === 38) {
+			if (e.keyCode === 38 && this.state.cursor > 0) {
 				e.preventDefault();
-				this.setState((preState) => ({
-					...preState,
-					cursor: this.state.cursor - 1,
-				}));
+				if (e.target.name === 'productName') {
+					return this.setState((preState) => ({
+						...preState,
+						cursor: preState.cursor - 1,
+						selectedList: this.state.listForProduct[preState.cursor - 1],
+						productId: this.state.listForProduct[preState.cursor - 1].id,
+					}));
+				}
+
+				// this.setState((preState) => ({
+				// 	...preState,
+				// 	cursor: preState.cursor - 1,
+				// }));
+			}
+			if (e.keyCode === 13) {
+				console.log(this.state.selectedList.price);
+				e.preventDefault();
+				if (
+					this.state.listForId.length > 0 ||
+					this.state.listForProduct.length > 0
+				) {
+					this.setState({
+						productId: this.state.selectedList.id,
+						productName: this.state.selectedList.name,
+						listForId: [],
+						listForProduct: [],
+					});
+				}
 			}
 		}
 	};
 	render() {
-		console.log(this.state);
+		console.log(
+			this.state.selectedList === undefined ? '' : this.state.selectedList.id,
+		);
 		return (
 			<form className='sale-panel'>
 				<SearchInput
@@ -104,8 +164,26 @@ class SaleForm extends React.Component {
 					keyDown={this.handleKeyDown}
 					autoComplete='off'
 				/>
-				<p>Price: {0}</p>
-				<p>Value: {0}</p>
+				<SearchInput
+					id='quantity'
+					name='quantity'
+					placeholder='quantity'
+					value={this.state.quantity}
+					handleChange={this.handleChange}
+					autoComplete='off'
+				/>
+				<p>
+					Price:{' '}
+					{this.state.selectedList === undefined
+						? ''
+						: this.state.selectedList.price}
+				</p>
+				<p>
+					Value:{' '}
+					{this.state.selectedList === undefined
+						? 0
+						: this.state.selectedList.price * this.state.quantity}
+				</p>
 
 				<button>Submit</button>
 			</form>
