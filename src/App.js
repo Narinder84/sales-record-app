@@ -4,7 +4,7 @@ import React from 'react';
 
 import './App.scss';
 import NavBar from './components/navbar-component/navbar-component.jsx';
-import SalesRecord from './components/sales-record/sales-record-component.jsx';
+import SalesRecord from './pages/sales-record/sales-record-component';
 
 function App() {
 	return (

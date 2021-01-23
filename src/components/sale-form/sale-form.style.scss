@@ -1,0 +1,17 @@
+/** @format */
+.sale-panel {
+	justify-content: space-evenly;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	button {
+		color: whitesmoke;
+		font-size: 1.1rem;
+		height: 40px;
+		width: 100px;
+		background-color: #558128;
+	}
+	p {
+		font-size: 1.1rem;
+	}
+}

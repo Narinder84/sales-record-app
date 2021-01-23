@@ -1,12 +1,31 @@
 /** @format */
 .input-container {
+	width: 100px;
 	label {
 		font-size: 1.1rem;
 		padding-right: 10px;
 	}
 	input {
+		width: 150px;
+		margin-top: 0px;
+		background-color: whitesmoke;
+		border: 2px solid black;
+		font-size: 1.2rem;
 		padding: 5px;
 		margin-top: 2px;
 		height: 25px;
+	}
+}
+.li {
+	list-style: none;
+	padding-left: 5px;
+}
+.serach-box {
+	margin-top: 0px;
+	bottom: 50px;
+	background-color: whitesmoke;
+	position: absolute;
+	&.active {
+		border: 1px black solid;
 	}
 }

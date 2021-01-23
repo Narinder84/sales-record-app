@@ -1,6 +1,7 @@
 /** @format */
 
 import React from 'react';
+import SalesTable from '../../';
 
 import './sales-record-styles.scss';
 
@@ -11,56 +12,7 @@ const SalesRecord = () => {
 				<p>Oder Details</p>
 			</div>
 			<div className='upper-section'>
-				<div className='sales-table-container'>
-					<div className='sales-table'>
-						<div className='heading-row'>
-							<div className='cell'>
-								<span>S. No:</span>
-							</div>
-							<div className='cell'>
-								<span>Name</span>
-							</div>
-							<div className='cell'>
-								<span>price</span>
-							</div>
-							<div className='cell'>
-								<span>Quantity</span>
-							</div>
-							<div className='cell'>
-								<span>Total</span>
-							</div>
-							<div className='cell'>
-								<span>Action</span>
-							</div>
-						</div>
-						{[...new Array(50)].map(() => {
-							return (
-								<div className='data-row'>
-									<form>
-										<div className='cell'>
-											<span>1</span>
-										</div>
-										<div className='cell'>
-											<input placeholder='Name' />
-										</div>
-										<div className='cell'>
-											<span>Price</span>
-										</div>
-										<div className='cell'>
-											<input type='text' placeholder='Quantity' />
-										</div>
-										<div className='cell'>
-											<span>Total</span>
-										</div>
-										<div className='cell'>
-											<span>Edit | Dele</span>
-										</div>
-									</form>
-								</div>
-							);
-						})}
-					</div>
-				</div>
+				<SalesTable />
 				<div className='left-panel'>
 					<p>Info:</p>
 					<div className='table-section'>

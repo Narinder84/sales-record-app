@@ -1,31 +1,53 @@
 /** @format */
 
 import React from 'react';
+import SearchInput from '../search-inut-box/search-input.box';
 
 import './sale-form.style.scss';
 
-const SaleForm = () => {
-	return (
-		<div className='sale-panel'>
-			<div className=''>
-				<label htmlFor=''>Product Id:</label>
-				<input className='oder-form' placeholder='Product Id' />
-			</div>
-			<div className=''>
-				<label htmlFor=''>Product Id:</label>
-				<input className='oder-form' placeholder='Product Id' />
-			</div>
-			<div className=''>
-				<label htmlFor=''>Product Id:</label>
-				<input className='oder-form' placeholder='Product Id' />
-			</div>
+class SaleForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			productId: '',
+			productName: '',
+			productPrice: '',
+			list: [],
+			// list: [
+			// 	{ id: 1, name: 'milk', price: 2 },
+			// 	{ id: 2, name: 'water', price: 1 },
+			// 	{ id: 3, name: 'tea', price: 3 },
+			// ],
+		};
+	}
 
-			<span>Value</span>
-			<div className='bt'>
+	handleChange = (e) => {
+		const { name, value } = e.target;
+		this.setState({ [name]: value });
+	};
+
+	render() {
+		console.log(this.state);
+		return (
+			<form className='sale-panel'>
+				<SearchInput
+					name='productId'
+					placeholder='Product Id'
+					list={this.state.list.map((val) => val.id)}
+					handleChange={this.handleChange}
+				/>
+				<SearchInput
+					name='productName'
+					placeholder='Product Name'
+					list={this.state.list.map((val) => val.name)}
+				/>
+				<p>Price: {0}</p>
+				<p>Value: {0}</p>
+
 				<button>Submit</button>
-			</div>
-		</div>
-	);
-};
+			</form>
+		);
+	}
+}
 
 export default SaleForm;

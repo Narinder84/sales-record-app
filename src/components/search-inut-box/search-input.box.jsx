@@ -4,11 +4,22 @@ import React from 'react';
 
 import './search-input-box.styled.scss';
 
-const SearchInput = ({ label, handleChange, ...other }) => {
+const SearchInput = ({ list, label, handleChange, ...other }) => {
 	return (
 		<div className='input-container'>
-			<label htmlFor=''>{label}</label>
-			<input className='oder-form' onchange={handleChange} {...other} />
+			<div className='serach-box'>
+				{list.map((val, indx) => {
+					return (
+						<>
+							<li className='li' key={indx}>
+								{val}
+							</li>
+						</>
+					);
+				})}
+
+				<input className='oder-form' onChange={handleChange} {...other} />
+			</div>
 		</div>
 	);
 };
