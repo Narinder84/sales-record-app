@@ -1,6 +1,7 @@
 /** @format */
 
 import React from 'react';
+
 import SearchInput from '../search-inut-box/search-input.box';
 
 import './sale-form.style.scss';
@@ -136,9 +137,6 @@ class SaleForm extends React.Component {
 		}
 	};
 	render() {
-		console.log(
-			this.state.selectedList === undefined ? '' : this.state.selectedList.id,
-		);
 		return (
 			<form className='sale-panel'>
 				<SearchInput
