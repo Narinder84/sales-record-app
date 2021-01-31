@@ -78,8 +78,12 @@ class TableRow extends React.Component {
 					<div className='cell'>
 						<span>{this.props.item.quantity * this.props.item.price}</span>
 					</div>
-					<div className='cell'>
-						<span onClick={this.handleClick}>Edit | Dele</span>
+					<div className='cell action '>
+						{this.state.isActive ? (
+							<span onClick={this.handleClick}>Save</span>
+						) : (
+							<span onClick={this.handleClick}>Edit</span>
+						)}
 					</div>
 				</form>
 			</div>
