@@ -1,9 +1,12 @@
 /** @format */
 
 import React from 'react';
+import { connect } from 'react-redux';
+
 import './sales-table.style.scss';
 
-const SalesTable = () => {
+const SalesTable = ({ oderList }) => {
+	console.log(oderList);
 	return (
 		<div className='sales-table-container'>
 			<div className='sales-table'>
@@ -27,24 +30,28 @@ const SalesTable = () => {
 						<span>Action</span>
 					</div>
 				</div>
-				{[...new Array(5)].map((val, indx) => {
+				{oderList.map((item, indx) => {
 					return (
 						<div key={indx} className='data-row'>
 							<form>
 								<div className='cell'>
-									<span>1</span>
+									<span>{item.id}</span>
 								</div>
 								<div className='cell'>
-									<input placeholder='Name' />
+									<input placeholder='Name' value={item.name} />
 								</div>
 								<div className='cell'>
-									<span>Price</span>
+									<span>{item.price}</span>
 								</div>
 								<div className='cell'>
-									<input type='text' placeholder='Quantity' />
+									<input
+										type='text'
+										placeholder='Quantity'
+										value={item.quantity}
+									/>
 								</div>
 								<div className='cell'>
-									<span>Total</span>
+									<span>{item.quantity * item.price}</span>
 								</div>
 								<div className='cell'>
 									<span>Edit | Dele</span>
@@ -57,4 +64,9 @@ const SalesTable = () => {
 		</div>
 	);
 };
-export default SalesTable;
+
+const mapStateToProp = (state) => ({
+	oderList: state.oder.oderList,
+});
+
+export default connect(mapStateToProp, null)(SalesTable);

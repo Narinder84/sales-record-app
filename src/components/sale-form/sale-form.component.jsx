@@ -3,8 +3,9 @@
 import React from 'react';
 
 import SearchInput from '../search-inut-box/search-input.box';
-
+import { setAddItemToOderList } from '../../redux/oder/oder.action';
 import './sale-form.style.scss';
+import { connect } from 'react-redux';
 
 class SaleForm extends React.Component {
 	constructor(props) {
@@ -120,6 +121,7 @@ class SaleForm extends React.Component {
 				// }));
 			}
 			if (e.keyCode === 13) {
+				console.log('click');
 				console.log(this.state.selectedList.price);
 				e.preventDefault();
 				if (
@@ -136,9 +138,20 @@ class SaleForm extends React.Component {
 			}
 		}
 	};
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+
+		const item = {
+			...this.state.selectedList,
+			quantity: this.state.quantity,
+			total: this.state.selectedList.price * this.state.quantity,
+		};
+		this.props.setAddItemToOderList(item);
+	};
 	render() {
 		return (
-			<form className='sale-panel'>
+			<form className='sale-panel' onSubmit={this.handleSubmit}>
 				<SearchInput
 					id='id'
 					name='productId'
@@ -178,7 +191,8 @@ class SaleForm extends React.Component {
 				</p>
 				<p>
 					Value:{' '}
-					{this.state.selectedList === undefined
+					{this.state.selectedList === undefined ||
+					this.state.selectedList.length === 0
 						? 0
 						: this.state.selectedList.price * this.state.quantity}
 				</p>
@@ -189,4 +203,7 @@ class SaleForm extends React.Component {
 	}
 }
 
-export default SaleForm;
+const mapDispatchToProps = (dispatch) => ({
+	setAddItemToOderList: (item) => dispatch(setAddItemToOderList(item)),
+});
+export default connect(null, mapDispatchToProps)(SaleForm);

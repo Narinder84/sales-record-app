@@ -2,7 +2,7 @@
 
 import { combineReducers } from 'redux';
 
-import { OderReducer } from '../redux/root-reducer';
+import { OderReducer } from '../redux/oder/oder.reducer';
 
 const rootReducer = combineReducers({
 	oder: OderReducer,
