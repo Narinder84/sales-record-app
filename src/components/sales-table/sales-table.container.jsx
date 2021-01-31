@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import TableRow from '../table.row/table.row';
 
 import './sales-table.style.scss';
 
@@ -31,34 +32,7 @@ const SalesTable = ({ oderList }) => {
 					</div>
 				</div>
 				{oderList.map((item, indx) => {
-					return (
-						<div key={indx} className='data-row'>
-							<form>
-								<div className='cell'>
-									<span>{item.id}</span>
-								</div>
-								<div className='cell'>
-									<input placeholder='Name' value={item.name} />
-								</div>
-								<div className='cell'>
-									<span>{item.price}</span>
-								</div>
-								<div className='cell'>
-									<input
-										type='text'
-										placeholder='Quantity'
-										value={item.quantity}
-									/>
-								</div>
-								<div className='cell'>
-									<span>{item.quantity * item.price}</span>
-								</div>
-								<div className='cell'>
-									<span>Edit | Dele</span>
-								</div>
-							</form>
-						</div>
-					);
+					return <TableRow key={indx} indx={indx} item={item} />;
 				})}
 			</div>
 		</div>

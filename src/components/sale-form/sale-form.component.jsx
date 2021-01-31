@@ -121,8 +121,6 @@ class SaleForm extends React.Component {
 				// }));
 			}
 			if (e.keyCode === 13) {
-				console.log('click');
-				console.log(this.state.selectedList.price);
 				e.preventDefault();
 				if (
 					this.state.listForId.length > 0 ||
@@ -141,13 +139,22 @@ class SaleForm extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-
+		console.log(this.state.selectedList.length);
+		if (this.state.selectedList.length === 0) {
+			return;
+		}
 		const item = {
 			...this.state.selectedList,
 			quantity: this.state.quantity,
 			total: this.state.selectedList.price * this.state.quantity,
 		};
 		this.props.setAddItemToOderList(item);
+		this.setState({
+			productId: '',
+			productName: '',
+			productPrice: '',
+			quantity: 0,
+		});
 	};
 	render() {
 		return (
