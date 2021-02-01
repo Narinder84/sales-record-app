@@ -19,12 +19,14 @@ class SaleForm extends React.Component {
 			selected: '',
 			listForId: [],
 			listForProduct: [],
+			selectedList: [],
 			list: [
 				{ id: 1, name: 'milk', price: 2 },
 				{ id: 2, name: 'water', price: 1 },
 				{ id: 3, name: 'tea', price: 3 },
 			],
 		};
+		this.textInput = React.createRef();
 	}
 	handleChange = (e) => {
 		const { name, value } = e.target;
@@ -138,8 +140,9 @@ class SaleForm extends React.Component {
 	};
 
 	handleSubmit = (e) => {
+		console.log('====');
 		e.preventDefault();
-		console.log(this.state.selectedList.length);
+
 		if (this.state.selectedList.length === 0) {
 			return;
 		}
@@ -150,11 +153,16 @@ class SaleForm extends React.Component {
 		};
 		this.props.setAddItemToOderList(item);
 		this.setState({
+			cursor: 0,
 			productId: '',
 			productName: '',
 			productPrice: '',
 			quantity: 0,
+			selected: '',
+			listForId: [],
+			selectedList: [],
 		});
+		this.textInput.current.focus();
 	};
 	render() {
 		return (
@@ -169,6 +177,7 @@ class SaleForm extends React.Component {
 					list={this.state.listForId.map((data) => data.id)}
 					autoComplete='off'
 					handleChange={this.handleChange}
+					inputRef={this.textInput}
 				/>
 				<SearchInput
 					id='name'

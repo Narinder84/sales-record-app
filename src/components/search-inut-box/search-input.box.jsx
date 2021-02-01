@@ -10,6 +10,7 @@ const SearchInput = ({
 	cursor,
 	keyDown,
 	handleChange,
+	inputRef,
 	...other
 }) => {
 	return (
@@ -34,6 +35,7 @@ const SearchInput = ({
 						onChange={handleChange}
 						onKeyDown={keyDown}
 						{...other}
+						ref={inputRef}
 					/>
 				</div>
 			</div>
