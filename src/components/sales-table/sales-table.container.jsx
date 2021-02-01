@@ -7,7 +7,6 @@ import TableRow from '../table.row/table.row';
 import './sales-table.style.scss';
 
 const SalesTable = ({ oderList }) => {
-	console.log(oderList);
 	return (
 		<>
 			<div className='sales-table-container'>

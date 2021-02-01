@@ -1,21 +1,17 @@
 /** @format */
 
 import { oderActionTypes } from './oder.action.types';
+import oderList from './oder.utils';
 
 const INITIAL_STATE = {
-	oderList: [
-		// { id: 1, name: 'milk', price: 2, quantity: 30 },
-		// { id: 2, name: 'water', price: 1, quantity: 10 },
-		// { id: 3, name: 'tea', price: 3, quantity: 5 },
-	],
+	oderList: [{ id: 3, name: 'tea', price: 3, quantity: 5 }],
+	message: '',
 };
 
 export const OderReducer = (state = INITIAL_STATE, action = {}) => {
-	console.log(action);
 	switch (action.type) {
 		case oderActionTypes.ADD_ITEM_TO_ODER_LIST:
-			const newList = [...state.oderList, action.payload];
-			return { ...state, oderList: newList };
+			return oderList(state, action.payload);
 
 		default:
 			return state;

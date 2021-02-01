@@ -140,7 +140,6 @@ class SaleForm extends React.Component {
 	};
 
 	handleSubmit = (e) => {
-		console.log('====');
 		e.preventDefault();
 
 		if (this.state.selectedList.length === 0) {
@@ -164,6 +163,9 @@ class SaleForm extends React.Component {
 		});
 		this.textInput.current.focus();
 	};
+	componentDidMount() {
+		this.textInput.current.focus();
+	}
 	render() {
 		return (
 			<form className='sale-panel' onSubmit={this.handleSubmit}>

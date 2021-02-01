@@ -79,16 +79,16 @@ class TableRow extends React.Component {
 					</div>
 					<div className='  bo cell action '>
 						<span>
-							<i class='far fa-trash-alt'></i>
+							<i className='far fa-trash-alt'></i>
 						</span>
 
 						{this.state.isActive ? (
 							<span onClick={this.handleClick}>
-								<i class='far fa-save'></i>
+								<i className='far fa-save'></i>
 							</span>
 						) : (
 							<span onClick={this.handleClick}>
-								<i class='far fa-edit'></i>
+								<i className='far fa-edit'></i>
 							</span>
 						)}
 					</div>
