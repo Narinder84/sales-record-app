@@ -50,7 +50,6 @@ class TableRow extends React.Component {
 		}
 	};
 	render() {
-		console.log(this.state.quantity === '', '===----', this.props.quantity);
 		return (
 			<div key={this.props.indx} className='data-row'>
 				<form onSubmit={this.handleSubmit}>
@@ -78,11 +77,19 @@ class TableRow extends React.Component {
 					<div className='cell'>
 						<span>{this.props.item.quantity * this.props.item.price}</span>
 					</div>
-					<div className='cell action '>
+					<div className='  bo cell action '>
+						<span>
+							<i class='far fa-trash-alt'></i>
+						</span>
+
 						{this.state.isActive ? (
-							<span onClick={this.handleClick}>Save</span>
+							<span onClick={this.handleClick}>
+								<i class='far fa-save'></i>
+							</span>
 						) : (
-							<span onClick={this.handleClick}>Edit</span>
+							<span onClick={this.handleClick}>
+								<i class='far fa-edit'></i>
+							</span>
 						)}
 					</div>
 				</form>

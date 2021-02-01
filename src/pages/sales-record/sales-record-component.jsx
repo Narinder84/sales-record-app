@@ -10,9 +10,6 @@ import './sales-record-styles.scss';
 const SalesRecord = () => {
 	return (
 		<div className='sales-record-container'>
-			<div className='sales-heading'>
-				<p>Oder Details</p>
-			</div>
 			<div className='upper-section'>
 				<SalesTable />
 				<InfoTable />
