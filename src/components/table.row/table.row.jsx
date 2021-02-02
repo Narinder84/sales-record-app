@@ -47,7 +47,6 @@ class TableRow extends React.Component {
 		}
 	};
 	handleSubmit = (e) => {
-		console.log('submmit', e);
 		e.preventDefault();
 		this.state.quantity
 			? this.setState({ ...this.state, isActive: false })

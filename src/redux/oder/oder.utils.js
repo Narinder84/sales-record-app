@@ -14,6 +14,6 @@ export const oderListAfterDeleteItem = (state, item) => {
 		...state,
 		oderList: state.oderList.filter((data) => data.id !== item.id),
 	};
-	console.log(data);
+
 	return data;
 };
