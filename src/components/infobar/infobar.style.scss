@@ -1,6 +1,13 @@
 /** @format */
-
+.mess {
+	font-size: 1.1rem;
+	color: rgb(139, 105, 105);
+}
 .co {
 	margin-left: 10px;
 	color: brown;
+	&:hover {
+		cursor: pointer;
+		color: black;
+	}
 }

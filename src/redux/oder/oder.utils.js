@@ -1,6 +1,6 @@
 /** @format */
 
-const oderList = (state, item) => {
+export const oderList = (state, item) => {
 	const isInclude = state.oderList.find((data) => data.id === item.id);
 
 	if (!!isInclude) {
@@ -9,5 +9,11 @@ const oderList = (state, item) => {
 	const newlist = [...state.oderList, item];
 	return { ...state, message: '', oderList: newlist };
 };
-
-export default oderList;
+export const oderListAfterDeleteItem = (state, item) => {
+	const data = {
+		...state,
+		oderList: state.oderList.filter((data) => data.id !== item.id),
+	};
+	console.log(data);
+	return data;
+};

@@ -11,7 +11,7 @@ const InfoBar = ({ message, deleteMessage }) => {
 		<>
 			{message ? (
 				<>
-					<p>{message}</p>
+					<p className='mess'>{message}</p>
 					<p onClick={deleteMessage}>
 						<i className='co fas fa-times'></i>
 					</p>
