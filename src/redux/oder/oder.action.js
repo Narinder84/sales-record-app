@@ -11,3 +11,7 @@ export const setDeleteItemFromOderList = (item) => ({
 	type: oderActionTypes.DELETE_ITEM_FROM_ODER_LIST,
 	payload: item,
 });
+
+export const setDeleteMessage = () => ({
+	type: oderActionTypes.REMOVE_MESSAGE,
+});
