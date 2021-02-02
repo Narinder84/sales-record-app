@@ -1,12 +1,21 @@
 /** @format */
 .sales-record-container {
-	padding: 5px;
+	padding: 0 5px 0 5px;
+	.middle-section {
+		height: 40px;
+		border-radius: 5px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 2px solid rgb(4, 55, 85);
+	}
 }
 .upper-section {
 	display: flex;
-	height: 555px;
+	height: 505px;
 	width: 99.3vw;
 	background-color: rgb(229, 233, 225);
+
 	.right-panel {
 		display: flex;
 		flex-direction: column;
