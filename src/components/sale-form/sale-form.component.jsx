@@ -3,7 +3,7 @@
 import React from 'react';
 
 import SearchInput from '../search-inut-box/search-input.box';
-import { setAddItemToOderList } from '../../redux/oder/oder.action';
+import { setAddItemToOderList, setMessage } from '../../redux/oder/oder.action';
 import './sale-form.style.scss';
 import { connect } from 'react-redux';
 
@@ -61,7 +61,8 @@ class SaleForm extends React.Component {
 				...prevState,
 				[name]: value,
 				listForId: newlist,
-				selectedList: newlist.length > 0 ? newlist[this.state.cursor] : [],
+				selectedList:
+					newlist.length > 0 ? newlist[this.state.cursor] : undefined,
 				productName: newlist.length ? newlist[this.state.cursor].name : '',
 			}));
 		}
@@ -78,7 +79,7 @@ class SaleForm extends React.Component {
 				[name]: value,
 				listForProduct: newlist,
 				productId: newlist.length > 0 ? newlist[this.state.cursor].id : '',
-				selectedList: newlist ? newlist[this.state.cursor] : [],
+				selectedList: newlist ? newlist[this.state.cursor] : undefined,
 			});
 		}
 	};
@@ -142,12 +143,15 @@ class SaleForm extends React.Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 
-		if (
-			this.state.selectedList === undefined &&
-			Number(this.state.quantity) === 0
-		) {
-			return;
+		if (this.state.selectedList === undefined) {
+			const message = 'All field details are must';
+			return this.props.setMessage(message);
 		}
+		if (Number(this.state.quantity) === 0) {
+			const message = 'Quantity not added . Please give valid quantity';
+			return this.props.setMessage(message);
+		}
+
 		const item = {
 			...this.state.selectedList,
 			quantity: this.state.quantity,
@@ -162,7 +166,7 @@ class SaleForm extends React.Component {
 			quantity: 0,
 			selected: '',
 			listForId: [],
-			selectedList: [],
+			selectedList: undefined,
 		});
 		this.textInput.current.focus();
 	};
@@ -226,5 +230,6 @@ class SaleForm extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
 	setAddItemToOderList: (item) => dispatch(setAddItemToOderList(item)),
+	setMessage: (message) => dispatch(setMessage(message)),
 });
 export default connect(null, mapDispatchToProps)(SaleForm);

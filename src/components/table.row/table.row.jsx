@@ -35,13 +35,11 @@ class TableRow extends React.Component {
 	handleChange = (e) => {
 		e.preventDefault();
 		if (e.keyCode !== 13) {
-			console.log(e.keyCode, 'not 13');
 			e.preventDefault();
 			const { name, value } = e.target;
 			return this.setState({ [name]: value });
 		}
 		if (e.keyCode === 13) {
-			console.log(e.keyCode, 'is 13');
 			e.preventDefault();
 			return this.setState({ ...this.state, isActive: false });
 		}

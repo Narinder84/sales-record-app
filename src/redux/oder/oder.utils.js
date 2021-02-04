@@ -7,11 +7,12 @@ export const oderList = (state, item) => {
 		return { ...state, message: 'Item already exists' };
 	}
 	const newlist = [...state.oderList, item];
-	return { ...state, message: '', oderList: newlist };
+	return { ...state, message: 'Item added', oderList: newlist };
 };
 export const oderListAfterDeleteItem = (state, item) => {
 	const data = {
 		...state,
+		message: 'Item deleted',
 		oderList: state.oderList.filter((data) => data.id !== item.id),
 	};
 

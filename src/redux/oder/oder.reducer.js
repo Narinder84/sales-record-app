@@ -16,7 +16,11 @@ export const OderReducer = (state = INITIAL_STATE, action = {}) => {
 			return oderListAfterDeleteItem(state, action.payload);
 		case oderActionTypes.REMOVE_MESSAGE:
 			return { ...state, message: '' };
-
+		case oderActionTypes.SET_MESSAGE:
+			return {
+				...state,
+				message: action.payload,
+			};
 		default:
 			return state;
 	}

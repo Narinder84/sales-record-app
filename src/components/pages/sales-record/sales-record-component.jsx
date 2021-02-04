@@ -38,15 +38,12 @@ const SalesRecord = () => {
 			<div className='lower-section'>
 				<div className='sale-panel'>
 					<div className=''>
-						<label htmlFor=''>Product Id:</label>
 						<input className='oder-form' placeholder='Product Id' />
 					</div>
 					<div className=''>
-						<label htmlFor=''>Product Id:</label>
 						<input className='oder-form' placeholder='Product Id' />
 					</div>
 					<div className=''>
-						<label htmlFor=''>Product Id:</label>
 						<input className='oder-form' placeholder='Product Id' />
 					</div>
 

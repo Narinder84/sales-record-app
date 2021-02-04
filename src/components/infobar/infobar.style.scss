@@ -2,18 +2,18 @@
 .mess {
 	text-transform: capitalize;
 	font-size: 1.1rem;
-	color: rgb(248, 14, 14);
+	color: rgb(230, 175, 175);
 }
 .message {
 	text-transform: capitalize;
 	font-size: 1.1rem;
-	color: rgb(7, 80, 7);
+	color: whitesmoke;
 }
 .co {
 	margin-left: 10px;
-	color: brown;
+	color: rgb(230, 175, 175);
 	&:hover {
 		cursor: pointer;
-		color: black;
+		color: red;
 	}
 }

@@ -8,6 +8,7 @@
 		justify-content: center;
 		align-items: center;
 		border: 2px solid rgb(4, 55, 85);
+		background-color: rgb(4, 55, 85);
 	}
 }
 .upper-section {
@@ -52,13 +53,14 @@
 	flex-direction: column;
 
 	.heading-row {
+		color: whitesmoke;
 		position: sticky;
 		top: 0;
 		display: flex;
 		height: 40px;
 		justify-content: space-between;
 		align-items: center;
-		background-color: slategrey;
+		background-color: rgb(4, 55, 85);
 		.cell {
 			display: flex;
 			justify-content: center;
