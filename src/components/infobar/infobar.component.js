@@ -16,7 +16,9 @@ const InfoBar = ({ message, deleteMessage }) => {
 						<i className='co fas fa-times'></i>
 					</p>
 				</>
-			) : null}
+			) : (
+				<p className='message'>Record Sale</p>
+			)}
 		</>
 	);
 };
