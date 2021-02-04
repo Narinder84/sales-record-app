@@ -60,7 +60,7 @@ class TableRow extends React.Component {
 			<div key={this.props.indx} className='data-row'>
 				<form onSubmit={this.handleSubmit}>
 					<div className='cell'>
-						<span>{this.props.item.id}</span>
+						<span>{this.props.indx + 1}</span>
 					</div>
 					<div className='cell'>
 						<span>{this.props.item.name}</span>
