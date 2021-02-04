@@ -19,7 +19,7 @@ class SaleForm extends React.Component {
 			selected: '',
 			listForId: [],
 			listForProduct: [],
-			selectedList: [],
+			selectedList: undefined,
 			list: [
 				{ id: 1, name: 'milk', price: 2 },
 				{ id: 2, name: 'water', price: 1 },
@@ -142,7 +142,10 @@ class SaleForm extends React.Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 
-		if (this.state.selectedList.length === 0) {
+		if (
+			this.state.selectedList === undefined &&
+			Number(this.state.quantity) === 0
+		) {
 			return;
 		}
 		const item = {
