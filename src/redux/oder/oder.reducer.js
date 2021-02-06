@@ -6,6 +6,8 @@ import { oderList, oderListAfterDeleteItem } from './oder.utils';
 const INITIAL_STATE = {
 	oderList: [],
 	message: '',
+	isActive: false,
+	focusSalePanel: true,
 };
 
 export const OderReducer = (state = INITIAL_STATE, action = {}) => {
@@ -16,6 +18,13 @@ export const OderReducer = (state = INITIAL_STATE, action = {}) => {
 			return oderListAfterDeleteItem(state, action.payload);
 		case oderActionTypes.REMOVE_MESSAGE:
 			return { ...state, message: '' };
+		case oderActionTypes.TOGGLE_IS_ACTIVE:
+			return {
+				...state,
+				isActive: !state.isActive,
+				focusSalePanel: !state.focusSalePanel,
+			};
+
 		case oderActionTypes.SET_MESSAGE:
 			return {
 				...state,

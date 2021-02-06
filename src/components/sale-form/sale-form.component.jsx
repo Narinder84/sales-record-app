@@ -11,6 +11,7 @@ class SaleForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			entringData: false,
 			cursor: 0,
 			productId: '',
 			productName: '',
@@ -59,6 +60,7 @@ class SaleForm extends React.Component {
 
 			return this.setState((prevState) => ({
 				...prevState,
+				entringData: true,
 				[name]: value,
 				listForId: newlist,
 				selectedList:
@@ -76,6 +78,7 @@ class SaleForm extends React.Component {
 			}
 			return this.setState({
 				...this.state,
+				entringData: true,
 				[name]: value,
 				listForProduct: newlist,
 				productId: newlist.length > 0 ? newlist[this.state.cursor].id : '',
@@ -159,6 +162,7 @@ class SaleForm extends React.Component {
 		};
 		this.props.setAddItemToOderList(item);
 		this.setState({
+			entringData: false,
 			cursor: 0,
 			productId: '',
 			productName: '',
@@ -173,6 +177,12 @@ class SaleForm extends React.Component {
 	componentDidMount() {
 		this.textInput.current.focus();
 	}
+	componentDidUpdate() {
+		if (this.state.entringData === false) {
+			return this.textInput.current.focus();
+		}
+	}
+
 	render() {
 		return (
 			<form className='sale-panel' onSubmit={this.handleSubmit}>
@@ -227,9 +237,12 @@ class SaleForm extends React.Component {
 		);
 	}
 }
-
+const mapStateToProps = (state) => ({
+	focusSalesTable: state.oder.isActive,
+	focusSaleForm: state.oder.focusSalePanel,
+});
 const mapDispatchToProps = (dispatch) => ({
 	setAddItemToOderList: (item) => dispatch(setAddItemToOderList(item)),
 	setMessage: (message) => dispatch(setMessage(message)),
 });
-export default connect(null, mapDispatchToProps)(SaleForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SaleForm);

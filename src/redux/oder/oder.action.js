@@ -21,3 +21,11 @@ export const setMessage = (message) => ({
 	type: oderActionTypes.SET_MESSAGE,
 	payload: message,
 });
+
+export const toggelIsActive = () => ({
+	type: oderActionTypes.TOGGLE_IS_ACTIVE,
+});
+
+export const setFocusSalePanel = () => ({
+	type: oderActionTypes.FOCUS_IS_SALE_PANEL,
+});

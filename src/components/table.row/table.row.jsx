@@ -3,7 +3,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { setDeleteItemFromOderList } from '../../redux/oder/oder.action.js';
+import {
+	setDeleteItemFromOderList,
+	toggelIsActive,
+	setFocusSalePanel,
+} from '../../redux/oder/oder.action.js';
 
 import './table.row.scss';
 
@@ -15,22 +19,26 @@ class TableRow extends React.Component {
 			quantity: this.props.item.quantity,
 			isActive: false,
 		};
+		this.textInput = React.createRef();
 	}
 
 	handleClick = (e) => {
-		this.setState((prevState) => {
-			if (this.state.quantity) {
+		this.setState(
+			(prevState) => {
+				if (this.state.quantity) {
+					return {
+						...prevState,
+						isActive: !prevState.isActive,
+					};
+				}
 				return {
 					...prevState,
 					isActive: !prevState.isActive,
+					quantity: this.props.item.quantity,
 				};
-			}
-			return {
-				...prevState,
-				isActive: !prevState.isActive,
-				quantity: this.props.item.quantity,
-			};
-		});
+			},
+			() => this.props.toggelIsActive(),
+		);
 	};
 	handleChange = (e) => {
 		e.preventDefault();
@@ -41,19 +49,26 @@ class TableRow extends React.Component {
 		}
 		if (e.keyCode === 13) {
 			e.preventDefault();
-			return this.setState({ ...this.state, isActive: false });
+			return this.setState(() => ({ ...this.state, isActive: false }));
 		}
 	};
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.state.quantity
-			? this.setState({ ...this.state, isActive: false })
+			? this.setState(() => ({ ...this.state, isActive: false }))
 			: this.setState({
 					...this.state,
 					quantity: this.props.item.quantity,
 					isActive: false,
 			  });
 	};
+
+	componentDidUpdate() {
+		if (this.props.focusSalesTable) {
+			return this.textInput.current.focus();
+		}
+		return;
+	}
 	render() {
 		const { item } = this.props;
 		return (
@@ -78,6 +93,7 @@ class TableRow extends React.Component {
 							value={this.state.quantity}
 							disabled={this.state.isActive ? false : true}
 							onChange={this.handleChange}
+							ref={this.textInput}
 						/>
 					</div>
 					<div className='cell'>
@@ -90,7 +106,7 @@ class TableRow extends React.Component {
 
 						{this.state.isActive ? (
 							<span onClick={this.handleClick}>
-								<i className='far fa-save'></i>
+								<i id='save' className='far fa-save'></i>
 							</span>
 						) : (
 							<span onClick={this.handleClick}>
@@ -103,9 +119,13 @@ class TableRow extends React.Component {
 		);
 	}
 }
-
+const mapStateToProps = (state) => ({
+	focusSalesTable: state.oder.isActive,
+});
 const mapDispatchToProps = (dispatch) => ({
 	deleteItem: (item) => dispatch(setDeleteItemFromOderList(item)),
+	toggelIsActive: () => dispatch(toggelIsActive()),
+	setFocus: () => dispatch(setFocusSalePanel()),
 });
 
-export default connect(null, mapDispatchToProps)(TableRow);
+export default connect(mapStateToProps, mapDispatchToProps)(TableRow);
