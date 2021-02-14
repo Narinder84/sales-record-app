@@ -37,7 +37,7 @@ class TableRow extends React.Component {
 					quantity: this.props.item.quantity,
 				};
 			},
-			() => this.props.toggelIsActive(),
+			() => this.props.toggleIsActive(),
 		);
 	};
 	handleChange = (e) => {
@@ -54,13 +54,29 @@ class TableRow extends React.Component {
 	};
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.state.quantity
-			? this.setState(() => ({ ...this.state, isActive: false }))
-			: this.setState({
-					...this.state,
+		this.setState(
+			(prevState) => {
+				if (this.state.quantity) {
+					return {
+						...prevState,
+						isActive: !prevState.isActive,
+					};
+				}
+				return {
+					...prevState,
+					isActive: !prevState.isActive,
 					quantity: this.props.item.quantity,
-					isActive: false,
-			  });
+				};
+			},
+			() => this.props.toggleIsActive(),
+		);
+		// this.state.quantity
+		// 	? this.setState(() => ({ ...this.state, isActive: false }))
+		// 	: this.setState({
+		// 			...this.state,
+		// 			quantity: this.props.item.quantity,
+		// 			isActive: false,
+		// 	  });
 	};
 
 	componentDidUpdate() {
@@ -124,7 +140,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
 	deleteItem: (item) => dispatch(setDeleteItemFromOderList(item)),
-	toggelIsActive: () => dispatch(toggelIsActive()),
+	toggleIsActive: () => dispatch(toggelIsActive()),
 	setFocus: () => dispatch(setFocusSalePanel()),
 });
 
